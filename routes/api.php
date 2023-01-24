@@ -27,4 +27,6 @@ Route::middleware('auth:api')->group( function () {
     Route::resource('movies', MovieController::class)->except([
         'index', 'show'
     ]);
+
+    Route::post('/movies/{movie}/comment', [MovieController::class, 'saveComment']);
 });

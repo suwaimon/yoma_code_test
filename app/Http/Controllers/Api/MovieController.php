@@ -136,4 +136,18 @@ class MovieController extends Controller
         }
         return response(['message' => 'Something is wrong!']);
     }
+
+    public function saveComment(CommentRequest $request, Movie $movie) {
+        $data = [
+            'description' => $request->description,
+            'email' => $request->email,
+            'user_id' => auth()->user()->id,
+            'movie_id' => $movie->id,
+        ];
+
+        $comment = Comment::create($data);
+        $movie["route_url"]    = 'detail';
+        
+        return new MovieResource($movie);
+    }
 }
