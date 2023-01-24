@@ -59,7 +59,7 @@ class Movie extends Model
     }
 
     public function getRatings() {
-        return Rating::where('movie_id', $this->id)->value('rate');
+        return Rating::where('movie_id', $this->id)->avg('rate');
     }
 
     public function getTagsName() {
