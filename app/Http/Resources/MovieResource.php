@@ -24,6 +24,7 @@ class MovieResource extends JsonResource
                 'genre_name' => $this->genre->name,
                 'author_name' => $this->author->name,
                 'pdf_url' => image_path($this->pdf_url, null),
+                'ratings' => $this->getRatings(),
                 'tags' => $this->getTagsName(),
                 'comments' => $this->getComments(),
                 'related_movies' => $this->relatedMovies(),

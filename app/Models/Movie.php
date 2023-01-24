@@ -58,6 +58,10 @@ class Movie extends Model
         return $this->belongsTo('App\Models\Genre');
     }
 
+    public function getRatings() {
+        return Rating::where('movie_id', $this->id)->value('rate');
+    }
+
     public function getTagsName() {
         return $this->tags->pluck('name');
     }
